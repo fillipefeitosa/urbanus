@@ -1,0 +1,19 @@
+version: "3"
+services:
+  app:
+    container_name: testeapp-meteor
+    restart: always
+    volumes:
+        - .:/home/meteor/app/
+    build: .
+    ports:
+      - "3000:3000"
+    links:
+      - mongo
+  mongo:
+    container_name: testeapp-mongo
+    image: mongo
+    volumes:
+      - ../mongoDB/testapp:/data/db
+    ports:
+      - "27017:27017"
