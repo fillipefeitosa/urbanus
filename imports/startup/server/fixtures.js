@@ -14,6 +14,11 @@ Meteor.startup(() => {
         Roles.createRole('Colaborador');
         Roles.createRole('Administrador');
     }
+    // Make new user as 'Convidado role'
+    Accounts.onCreateUser(function(options, user){
+        user.roles = ['Convidado'];
+        return user;
+    });
     // if the Links collection is empty
     if (Links.find().count() === 0) {
         const data = [

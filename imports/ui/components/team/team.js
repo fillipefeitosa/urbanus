@@ -10,4 +10,7 @@ Template.App_team.helpers({
     formCollection() {
         return Team;
     },
+    team(){
+        return Team.find({});
+    }
 });

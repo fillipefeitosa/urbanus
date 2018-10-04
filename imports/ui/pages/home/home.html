@@ -44,12 +44,6 @@
                     </ul>
                 </li>
                 <li>
-                    <a href="/about">
-                        <i class="glyphicon glyphicon-briefcase"></i>
-                        Sobre
-                    </a>
-                </li>
-                <li>
                     <a href="/team">
                         <i class="fas fa-users"></i>
                         Colaboradores
@@ -65,7 +59,13 @@
                 <li>
                     <a href="#">
                         <i class="glyphicon glyphicon-paperclip"></i>
-                        FAQ
+                        Upload de Ficheiros
+                    </a>
+                </li>
+                <li>
+                    <a href="/about">
+                        <i class="glyphicon glyphicon-briefcase"></i>
+                        Sobre
                     </a>
                 </li>
                 <li>
@@ -76,10 +76,10 @@
                 </li>
                 {{#if currentUser}}
                 <li>
-                        <a href="/logout" id="logout">
-                            <i class="fas fa-sign-out-alt"></i>
-                            Sair
-                        </a>
+                    <a href="/logout" id="logout">
+                        <i class="fas fa-sign-out-alt"></i>
+                        Sair
+                    </a>
                 </li>
                 {{/if}}
             </ul>
@@ -114,8 +114,8 @@
 
             {{> Template.dynamic template=pageContent}}
 
-            </div>
         </div>
+    </div>
 
-        {{> footer }}
+    {{> footer }}
 </template>
