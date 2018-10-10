@@ -6,6 +6,8 @@ import { Session } from 'meteor/session';
 import '../../ui/layouts/body/body.js';
 import '../../ui/layouts/header/header.js';
 import '../../ui/layouts/footer/footer.js';
+import '../../ui/layouts/clean-body/clean-body.js';
+import '../../ui/layouts/vega-header/vega-header.js';
 
 // Import needed pages
 import '../../ui/pages/home/home.js';
@@ -34,6 +36,15 @@ exposed.route('/team', {
     name: 'team',
     action: function(){
         BlazeLayout.render('App_body', {top: "header", main: "App_home", pageContent:"App_team"});
+    }
+});
+
+// Exposed Visualization Views
+exposed.route('/charts/view-chart/:chartId', {
+    action: function(params, queryParams){
+        console.log('I am on the chart:', params.chartId);
+        // BlazeLayout.render('App_body', {top: "header", main: "App_home", pageContent:"App_team"});
+        BlazeLayout.render('App_body', {top: "vega-header", main: "clean-body" });
     }
 });
 
@@ -89,7 +100,14 @@ loggedIn.route('/logout', {
             FlowRouter.go(FlowRouter.path('about'));
         });
     }
-})
+});
+
+loggedIn.route('/charts', {
+    name: 'charts',
+    action: function(){
+        BlazeLayout.render('App_body', { top: "header", main: "App_home", pageContent:"App_charts"});
+    }
+});
 
 // Admin routes
 admin = loggedIn.group({

@@ -10,3 +10,7 @@ import '../../api/tasks/server/publications.js';
 // team api
 import '../../api/team/team.js';
 import '../../api/team/server/publications.js';
+
+// Charts api
+import '../../api/charts/charts.js';
+import '../../api/charts/server/publications.js';

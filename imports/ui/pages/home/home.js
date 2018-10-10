@@ -7,3 +7,4 @@ import '../../components/info/info.js';
 import '../../components/pannel/pannel.js';
 import '../../components/map/map.js';
 import '../../components/team/team.js';
+import '../../components/charts/charts.js';

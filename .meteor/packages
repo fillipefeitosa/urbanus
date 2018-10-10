@@ -36,3 +36,5 @@ accounts-ui
 raix:handlebar-helpers
 msavin:jetsetter
 alanning:roles
+ostrio:files
+ostrio:autoform-files
