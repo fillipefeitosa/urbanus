@@ -5,9 +5,9 @@ import { Images } from '../images/images.js';
 
 SimpleSchema.extendOptions(['autoform']);
 
-export const Team = new Mongo.Collection('Team');
+export const Charts = new Mongo.Collection('Charts');
 
-Team.allow({
+Charts.allow({
     insert: function(){
         return true;
     },
@@ -19,21 +19,15 @@ Team.allow({
     }
 });
 
-TeamSchema = new SimpleSchema({
+ChartsSchema = new SimpleSchema({
     name: {
         type: String,
-        label: "Nome",
-        max: 200
+        label: 'Nome do Gráfico',
+        max: 30
     },
-    formation: {
-        type: String,
-        label: 'Formação',
-        max: 60
-    },
-    link: {
-        type: String,
-        label: "Link",
-        max: 200
+    available: {
+        type: Boolean,
+        optional: true,
     },
     picture: {
         type: String,
@@ -54,7 +48,6 @@ TeamSchema = new SimpleSchema({
             }
         }
     }
-
 });
 
-Team.attachSchema(TeamSchema);
+Charts.attachSchema(ChartsSchema);

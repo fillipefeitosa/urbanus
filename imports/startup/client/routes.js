@@ -14,12 +14,19 @@ import '../../ui/pages/home/home.js';
 import '../../ui/pages/about/about.js';
 import '../../ui/pages/not-found/not-found.js';
 import '../../ui/pages/login/login.js';
+import '../../ui/pages/landing/landing.js';
 
 // Set up all routes in the app
 
 
 // Public (exposed) routes
 exposed = FlowRouter.group({});
+exposed.route('/landing', {
+    name: 'landing',
+    action: function(){
+        BlazeLayout.render('App_body', {top: "header", main: "landing"});
+    }
+})
 exposed.route('/login', {
     name: 'login',
     action: function(){

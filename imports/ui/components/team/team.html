@@ -25,7 +25,7 @@
         <div class="col-md-4">
             <div class="thumbnail">
                 <div class="image view view-first">
-                    <img style="width: 100%; display: block;" src="img/404.svg" alt="image" />
+                    <img style="width: 100%; display: block;" src="{{imageFile picture}}" alt="image" />
                     <div class="mask">
                         <p class="text-center">{{formation}}</p>
                         <div class="tools tools-bottom">
@@ -33,7 +33,7 @@
                             <!-- Edit and Remove Team members -->
                             {{#if isInRole 'Colaborador'}}
                             <a href="#"><i class="fa fa-edit"></i></a>
-                            <a href="#"><i class="fa fa-times"></i></a>
+                            <a href="#" id="deleteTeamMember"><i class="fa fa-times"></i></a>
                             {{/if}}
                         </div>
                     </div>

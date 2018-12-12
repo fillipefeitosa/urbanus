@@ -3,8 +3,18 @@
 import { Meteor } from 'meteor/meteor';
 import { Links } from '../../api/links/links.js';
 import { Roles } from 'meteor/alanning:roles';
+import SimpleSchema from 'simpl-schema';
 
 Meteor.startup(() => {
+    // Set Conf for autoform-files <https://github.com/VeliovGroup/meteor-autoform-file>
+    SimpleSchema.setDefaultMessages({
+        initialLanguage: 'en',
+        messages: {
+            en: {
+                uploadError: '{{value}}', //File-upload
+            },
+        }
+    });
     // If the Roles collection is empty
     var roles = Meteor.roles.find({}).count();
     if (roles > 0) {

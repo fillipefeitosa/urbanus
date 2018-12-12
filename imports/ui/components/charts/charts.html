@@ -17,7 +17,12 @@
                         <div class="row">
                             <div class="col-md-2"></div>
                             <div class="col-md-5">
-                                {{> quickForm collection=formCollection id="insertTeamForm" type="insert"}}
+                                <!-- {{> quickForm collection=formCollection id="insertTeamForm" type="insert"}} -->
+                                {{#autoForm id="insertTeamForm" collection=formCollection type="insert"}}
+                                    {{> afQuickField name="name"}}
+                                    {{> afQuickField name="picture"}}
+                                    <button type="submit" class="btn btn-info">Submeter</button>
+                                {{/autoForm}}
                             </div>
                             <div class="col-md-5"></div>
                         </div>
@@ -44,7 +49,9 @@
                 <td>{{name}}</td>
                 <td>bar-chart</td>
                 <td>data.json</td>
-                <td>sim</td>
+                <td>
+                    <input type="checkbox" checked="{{available}}" id="setAvailability" data-toggle="toggle" data-size="small" data-on="Sim" data-off="Não" />
+                </td>
                 <td class="text-center">
                     <a href="charts/view-chart/{{_id}}" ><i class="fas fa-eye">
                     </i></a>
