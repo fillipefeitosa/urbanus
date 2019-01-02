@@ -1,0 +1,27 @@
+<template name="map_options">
+    <!-- Template Loaded via Router -->
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+        <i class="fas fa-map-marked-alt"> Opções</i>
+    </button>
+    <div class="modal left fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <div class="nav flex-sm-column flex-row">
+                        <a class="nav-item nav-link active"><i class="fas fa-map-marked-alt"> Mapas Disponíveis</i></a>
+                        {{> mapDropdown}}
+                    </div>
+                    {{#if isInRole 'Colaborador'}}
+                    <div class="nav flex-sm-column flex-row">
+                        <a class="nav-item nav-link active"><i class="fas fa-upload"> Carregar Ficheiro</i></a>
+                        {{> mapUploadForm}}
+                    </div>
+                    {{/if}}
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Fechar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>

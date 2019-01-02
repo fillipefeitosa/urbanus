@@ -21,7 +21,7 @@ import '../../ui/pages/landing/landing.js';
 
 // Public (exposed) routes
 exposed = FlowRouter.group({});
-exposed.route('/landing', {
+exposed.route('/', {
     name: 'landing',
     action: function(){
         BlazeLayout.render('App_body', {top: "header", main: "landing"});
@@ -33,18 +33,63 @@ exposed.route('/login', {
         BlazeLayout.render('login', { top: "header", main: "App_home", pageContent:"info"});
     }
 });
-exposed.route('/about', {
+
+// Urbanus Internal System Logic
+urbanus = exposed.group({
+    prefix: "/urbanus",
+    name: "urbanus"
+});
+
+urbanus.route('/', {
+  name: 'App.home',
+  action() {
+    BlazeLayout.render('App_body', { top:'header', main: 'App_home', pageContent:"App_about" });
+  },
+});
+
+urbanus.route('/about', {
     name: 'about',
     action: function(){
         BlazeLayout.render('App_body', { top: "header", main: "App_home", pageContent:"App_about"});
     }
 });
-exposed.route('/team', {
+urbanus.route('/team', {
     name: 'team',
     action: function(){
         BlazeLayout.render('App_body', {top: "header", main: "App_home", pageContent:"App_team"});
     }
 });
+urbanus.route('/data', {
+    name: 'data',
+    action: function(){
+        BlazeLayout.render('App_body', {top: "header", main: "App_home", pageContent: "App_data"});
+    }
+});
+
+urbanus.route('/links', {
+  name: 'links',
+  action() {
+    BlazeLayout.render('App_body', { top: "header", main: "App_home", pageContent:"info"});
+  },
+});
+
+exposed.route('/logout', {
+    name: 'logout',
+    action: function(){
+        Meteor.logout(function(){
+            FlowRouter.go('/');
+        });
+    }
+});
+
+
+// Flow Router Deafults
+FlowRouter.notFound = {
+  action() {
+    BlazeLayout.render('App_body', { main: 'App_notFound' });
+  },
+};
+
 
 // Exposed Visualization Views
 exposed.route('/charts/view-chart/:chartId', {
@@ -56,28 +101,10 @@ exposed.route('/charts/view-chart/:chartId', {
 });
 
 // Regular Routes. Should be Exposed?
-FlowRouter.route('/', {
-  name: 'App.home',
-  action() {
-    BlazeLayout.render('App_body', { top:'header', main: 'App_home', pageContent:"App_about" });
-  },
-});
-
-FlowRouter.route('/links', {
-  name: 'links',
-  action() {
-    BlazeLayout.render('App_body', { top: "header", main: "App_home", pageContent:"info"});
-  },
-});
-
-FlowRouter.notFound = {
-  action() {
-    BlazeLayout.render('App_body', { main: 'App_notFound' });
-  },
-};
 
 // Logged Routes
 loggedIn = FlowRouter.group({
+    prefix: '/urbanus',
     triggersEnter: [
         function(){
             var route;
@@ -96,16 +123,7 @@ loggedIn = FlowRouter.group({
 loggedIn.route('/maps', {
     name: 'maps',
     action: function(){
-        BlazeLayout.render('App_body', { top: "header", main: "App_home", pageContent:"App_map"});
-    }
-});
-
-loggedIn.route('/logout', {
-    name: 'logout',
-    action: function(){
-        Meteor.logout(function(){
-            FlowRouter.go(FlowRouter.path('about'));
-        });
+        BlazeLayout.render('App_body', { top: "header", main: "App_home", pageContent:"App_map", specialComponent:"map_options"});
     }
 });
 

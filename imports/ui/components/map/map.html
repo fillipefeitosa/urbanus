@@ -1,4 +1,36 @@
 <template name="App_map">
-    <h1>Meu Mapa</h1>
-    
+
+    <div class="container">
+        <div class="row">
+            <div id='map'></div>
+        </div>
+    </div>
+
+</template>
+
+<template name="mapUploadForm">
+    {{#with currentUpload}}
+    Uploading <b>{{file.name}}</b>:
+    <span id="progress">{{progress.get}}%</span>
+    {{else}}
+    <input type="file" id="fileInput"  />
+    {{/with}}
+</template>
+
+<template name="mapDropdown">
+    <!-- Default dropright button -->
+    <div class="form-group">
+        <label for="mapSelector"></label>
+        <select class="selectpicker" multiple>
+            {{#each mapCollection}}
+            <option>{{name}}</option>
+            {{/each}}
+        </select>
+        <select multiple class="form-control" id="mapSelector">
+            {{#each mapCollection}}
+            <option id="{{_id}}" value="{{_id}}">{{name}}</option>
+            {{/each}}
+        </select>
+    </div>
+
 </template>

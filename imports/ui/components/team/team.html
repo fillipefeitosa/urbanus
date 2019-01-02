@@ -1,4 +1,5 @@
 <template name="App_team">
+    <h2>Colaboradores</h2>
     {{#if isInRole 'Colaborador'}}
     <div class="panel-group">
         <div class="panel panel-default">
@@ -18,11 +19,11 @@
         </div>
     </div>
     {{/if }}
-    <h2>Colaboradores</h2>
 
+    <hr class="small" />
     <div class="row">
         {{#each team}}
-        <div class="col-md-4">
+        <div class="col-md-2">
             <div class="thumbnail">
                 <div class="image view view-first">
                     <img style="width: 100%; display: block;" src="{{imageFile picture}}" alt="image" />
@@ -44,6 +45,7 @@
             </div>
         </div>
         {{/each}}
+        <div class="col-md-6"></div>
     </div>
 
 </template>

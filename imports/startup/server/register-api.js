@@ -18,3 +18,7 @@ import '../../api/charts/server/publications.js';
 // Images api
 import '../../api/images/images.js';
 import '../../api/images/server/publications.js';
+
+// Maps api
+import '../../api/maps/maps.js';
+import '../../api/maps/server/publications.js';

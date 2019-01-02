@@ -2,7 +2,7 @@ import { Links } from '/imports/api/links/links.js';
 import { Meteor } from 'meteor/meteor';
 import './info.html';
 
-Template.info.onCreated(function () {
+Template.info.onRendered(function () {
   Meteor.subscribe('links.all');
 });
 

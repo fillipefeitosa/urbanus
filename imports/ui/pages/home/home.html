@@ -1,93 +1,34 @@
 <template name="App_home">
 
-    <div class="wrapper">
-        <!-- Sidebar Holder -->
-        <nav id="sidebar">
-            <div class="sidebar-header">
-                <h3>Plataforma Lab</h3>
-                <strong>PL</strong>
-            </div>
+    <div class="wrapper" id="wrapper">
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper">
 
-            <ul class="list-unstyled components">
-                <li class="active">
-                    <a href="/">
-                        <i class="glyphicon glyphicon-home"></i>
-                        Home
+            <ul class="sidebar-nav">
+                <li class="sidebar-brand">
+                    <a href="/"><i class="fas fa-city"></i>
+                        Urbanus
                     </a>
                 </li>
                 <li>
-                    <a href="/team">
-                        <i class="fas fa-users"></i>
-                        Equipa
-                    </a>
+                    <a href="/urbanus/about"><i class="fas fa-info-circle"></i>  Sobre</a>
                 </li>
                 <li>
-
-                    <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false">
-                        <i class="glyphicon glyphicon-duplicate"></i>
-                        Relatórios
-                    </a>
-                    <ul class="collapse list-unstyled" id="pageSubmenu">
-                        <li><a href="/reports">Novo Relatório</a></li>
-                        <li><a href="#">Page 2</a></li>
-                        <li><a href="#">Page 3</a></li>
-                    </ul>
-
-                    <a href="#mapSubmenu" data-toggle="collapse" aria-expanded="false">
-                        <i class="fas fa-map-marked-alt"></i>
-                        Mapas
-                    </a>
-                    <ul class="collapse list-unstyled" id="mapSubmenu">
-                        <li><a href="/maps">Criar um Mapa</a></li>
-                        <li><a href="#">Page 2</a></li>
-                        <li><a href="#">Page 3</a></li>
-                    </ul>
-                    <a href="#tableSubmenu" data-toggle="collapse" aria-expanded="false">
-                        <i class="fas fa-table"></i>
-                        Tabelas
-                    </a>
-                    <ul class="collapse list-unstyled" id="tableSubmenu">
-                        <li><a href="/tables">Nova Tabela</a></li>
-                        <li><a href="#">Page 2</a></li>
-                        <li><a href="#">Page 3</a></li>
-                    </ul>
-                    <a href="#chartSubmenu" data-toggle="collapse">
-                        <i class="far fa-chart-bar"></i>
-                        Gráficos
-                    </a>
-                    <ul class="collapse list-unstyled" id="chartSubmenu">
-                        <li><a href="/charts">Novo Gráfico</a></li>
-                        <li><a href="#">Page 2</a></li>
-                        <li><a href="#">Page 3</a></li>
-                    </ul>
-                </li>
-
-
-
-                <li>
-                    <a href="/links">
-                        <i class="glyphicon glyphicon-link"></i>
-                        Links e Referências
-                    </a>
+                    <a href="/urbanus/team"><i class="fas fa-users"></i>  Equipa</a>
                 </li>
                 <li>
-                    <a href="#">
-                        <i class="glyphicon glyphicon-paperclip"></i>
-                        Upload de Ficheiros
-                    </a>
+                    <a href="/urbanus/maps"><i class="far fa-map"></i>  Mapas</a>
                 </li>
                 <li>
-                    <a href="/about">
-                        <i class="glyphicon glyphicon-briefcase"></i>
-                        Sobre
-                    </a>
+                    <a href="/urbanus/data"><i class="fas fa-table"></i>  Dados</a>
                 </li>
                 <li>
-                    <a href="#">
-                        <i class="glyphicon glyphicon-send"></i>
-                        Contato
-                    </a>
+                    <a href="/urbanus/charts"><i class="far fa-chart-bar"></i>  Carregar Ficheiros</a>
                 </li>
+                <li>
+                    <a href="/urbanus/links"><i class="fas fa-link"></i>  Links</a>
+                </li>
+                <hr class="small" />
                 {{#if currentUser}}
                 <li>
                     <a href="/logout" id="logout">
@@ -95,39 +36,31 @@
                         Sair
                     </a>
                 </li>
+                {{else}}
+                <li>
+                    <a href="/login">
+                        <i class="fas fa-sign-in-alt"></i>
+                        Login
+                    </a>
+                </li>
                 {{/if}}
             </ul>
-
-
-        </nav>
-
-        <!-- Page Content Holder -->
-        <div id="content">
-
-            <nav class="navbar navbar-default">
-                <div class="container-fluid">
-
-                    <div class="navbar-header">
-                        <button type="button" id="sidebarCollapse" class="btn btn-info navbar-btn">
-                            <i class="glyphicon glyphicon-align-left"></i>
-                            <span>Menu</span>
-                        </button>
-                    </div>
-
-                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                        <ul class="nav navbar-nav navbar-right">
-                            <li><a href="#">Getin</a></li>
-                            <li><a href="#">Institucional</a></li>
-                            <li><a href="#">Govcop</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </nav>
-            <!--- PAGE CONTENT should go here -->
-
-            {{> Template.dynamic template=pageContent}}
-
         </div>
+
+
+
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+            <div class="container-fluid">
+                <a href="#menu-toggle" class="btn btn-secondary" id="menu-toggle"><i class="fas fa-bars"></i> Menu</a>
+                {{> Template.dynamic template=specialComponent}}
+                <hr class="small" />
+                {{> Template.dynamic template=pageContent}}
+            </div>
+        </div>
+        <!-- /#page-content-wrapper -->
+
+
     </div>
 
     {{> footer }}
