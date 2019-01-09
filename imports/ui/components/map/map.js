@@ -13,7 +13,7 @@ populateMap = function(geoJsonLink, map){
     });
 }
 generateMap = function(mapDiv){
-    var container = L.DomUtil.get('map');
+    var container = L.DomUtil.get(mapDiv);
     if(container!=null){
         container._leaflet_id = null;
     }
