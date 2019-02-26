@@ -1,7 +1,26 @@
 import { Template } from 'meteor/templating';
+import { Team } from '/imports/api/team/team.js';
+import { Images } from '/imports/api/images/images.js';
 
 import './landing.html';
+import './timeline.html';
 
+
+// Team Logic for Landing Page
+Template.landing.onCreated(function(){
+    Meteor.subscribe("Team");
+});
+
+Template.landing.helpers({
+    team: function(){
+        return Team.find({});
+    },
+    imageFile(pictureId){
+        return Images.findOne(pictureId).link();
+    },
+});
+
+// Javascript for Landing Template Routines
 Template.landing.onRendered(function(){
     this.autorun(() => {
         (function($) {
@@ -63,6 +82,14 @@ Template.landing.onRendered(function(){
             });
             sr.reveal('.sr-icon-4', {
                 delay: 800,
+                scale: 0
+            });
+            sr.reveal('.sr-icon-5', {
+                delay: 1000,
+                scale: 0
+            });
+            sr.reveal('.sr-icon-6', {
+                delay: 1200,
                 scale: 0
             });
             sr.reveal('.sr-button', {
