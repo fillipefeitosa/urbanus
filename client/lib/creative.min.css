@@ -102,11 +102,13 @@ img::-moz-selection {
     font-weight: 700;
     text-transform: uppercase;
     color: #0d223d;
+    opacity: 0;
     font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif;
 }
 
 #mainNav .navbar-brand:focus, #mainNav .navbar-brand:hover {
     color: #0d223d;
+    opacity: 0;
 }
 
 #mainNav .navbar-nav > li.nav-item > a.nav-link,

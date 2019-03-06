@@ -28,6 +28,7 @@ TeamSchema = new SimpleSchema({
     formation: {
         type: String,
         label: 'Formação',
+        optional: true,
         max: 100
     },
     link: {
