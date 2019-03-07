@@ -3,13 +3,14 @@ set -e
 
 ### Configuration ###
 
-SERVER=meteorapp@dcspt-drivitup.com
+SERVER=meteorapp@dcspt-drivitup.ua.pt
 APP_DIR=/var/www/drivitup
 KEYFILE=
 REMOTE_SCRIPT_PATH=/tmp/deploy-myapp.sh
 
 
 ### Library ###
+echo "DrivitUp deployment script"
 
 function run()
 {

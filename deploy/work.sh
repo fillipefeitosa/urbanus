@@ -23,6 +23,9 @@ rm -f $APP_DIR/package.tar.gz
 # Install dependencies
 cd $APP_DIR/tmp/bundle/programs/server
 npm install --production
+rm /var/www/drivitup/tmp/bundle/programs/server/node_modules/.bin/has-ansi
+rm /var/www/drivitup/tmp/bundle/programs/server/node_modules/.bin/strip-ansi
+rm /var/www/drivitup/tmp/bundle/programs/server/node_modules/.bin/supports-color
 npm prune --production
 
 # Copy over persistent files
