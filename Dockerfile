@@ -4,10 +4,12 @@ MAINTAINER Fillipe Feitosa "fillipefeitosa@gmail.com"
 
 # build arguments
 ARG APP_PACKAGES
+ARG APP_NAME=urbanus
 ARG APP_LOCALE=en_US
 ARG APP_CHARSET=UTF-8
 ARG APP_USER=meteor
 ARG APP_USER_DIR=/home/${APP_USER}
+ARG APP_UPLOAD_DIR=/var/www/${APP_NAME}/public
 
 # run environment
 ENV APP_PORT=${APP_PORT:-3000}
@@ -32,6 +34,12 @@ RUN localedef ${APP_LOCALE}.${APP_CHARSET} -i ${APP_LOCALE} -f ${APP_CHARSET}
 RUN useradd -mUd ${APP_USER_DIR} ${APP_USER}
 RUN chown -Rh ${APP_USER} /usr/local
 RUN usermod -aG sudo ${APP_USER}
+
+# We create a folder to upload files (ie.: maps, images)
+RUN mkdir -p ${APP_UPLOAD_DIR}
+RUN chown -Rh ${APP_USER} ${APP_UPLOAD_DIR}
+
+# Change to APP_USER and install Meteor
 USER ${APP_USER}
 
 # We create a dedicated folder in which the app will be copied.
@@ -39,6 +47,7 @@ RUN cd /home/meteor && mkdir app
 
 # We copy the app in the said folder.
 COPY . /home/meteor/app/.
+
 
 # install Meteor
 RUN curl https://install.meteor.com/ | sh
