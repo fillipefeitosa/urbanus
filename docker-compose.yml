@@ -2,7 +2,7 @@ version: "3"
 services:
   app:
     container_name: testeapp-meteor
-    restart: always
+    restart: no
     volumes:
         - .:/home/meteor/app/
     build: .
