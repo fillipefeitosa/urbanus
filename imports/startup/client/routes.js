@@ -27,6 +27,12 @@ exposed.route('/', {
         BlazeLayout.render('App_body', {top: "header", main: "landing"});
     }
 })
+exposed.route('/test', {
+    name: 'test',
+    action: function(){
+        BlazeLayout.render('test');
+    }
+})
 exposed.route('/timeline', {
     name: 'timeline',
     action: function(){
